@@ -15,5 +15,16 @@
             "test_mods_all"
           ]
         },
+        {
+          "name": "help",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "${workspaceFolder}/src/__main__.py",
+          "console": "integratedTerminal",
+          "args": [
+            "test_mods",
+            "-h"
+          ]
+        }
     ]
 }

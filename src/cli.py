@@ -1,16 +1,16 @@
-import json
 import sys
-import os
+import json
+from pathlib import Path
 
-import commands
 import log
+import commands
 
 
 def cli_logic():
     if getattr(sys, 'frozen', False):
-        script_dir = os.path.dirname(sys.executable)
+        script_dir = Path(sys.executable).parent
     else:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        script_dir = Path(__file__).resolve().parent
 
     cli_json = f'{script_dir}/cli.json'
 
