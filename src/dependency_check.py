@@ -15,10 +15,8 @@ def check_command(command):
 def check_rust():
     return check_command(["cargo", "--version"])
 
-
 def check_msvc_build_tools():
     return check_command(["cl", "/?"])
-
 
 def check_git():
     return check_command(["git", "--version"])
