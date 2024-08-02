@@ -11,7 +11,7 @@
           "program": "${workspaceFolder}/src/__main__.py",
           "console": "integratedTerminal",
           "args": [
-            "${workspaceFolder}/assets/base/default/settings.json",
+            "${workspaceFolder}/assets/bases/release_base/default/settings.json",
             "test_mods_all"
           ]
         },

@@ -20,7 +20,7 @@ theme_colors = {
     'Thread:': '\033[38;2;255;140;0m', # Dark Orange
     'Process:': '\033[38;2;255;20;147m',  # Deep Pink
     'Window:': '\033[38;2;255;165;0m',  # Light Orange
-    'Monitor:': '\033[38;2;173;216;230m',  # Light Blue
+    'Check:': '\033[38;2;173;216;230m',  # Light Blue
     'Progress Bar:': '\033[38;2;144;238;144m',  # Light Green
     'Packed': '\033[38;2;218;112;214m',  # Orchid
     'Command:': '\033[38;2;255;182;193m',  # Light Pink
