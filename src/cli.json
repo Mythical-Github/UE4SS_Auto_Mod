@@ -1,0 +1,14 @@
+{
+    "test_mods": {
+        "function_name": "test_mods",
+        "arg_help_pairs": [
+            {"mod_names": "list of mod_names, strings"}
+        ]
+    },
+    "test_mods_all": {
+        "function_name": "test_mods_all",
+        "arg_help_pairs": [
+            {"settings_json_path": "Path to settings.json"}
+        ]
+    }
+}

@@ -12,7 +12,7 @@
           "console": "integratedTerminal",
           "args": [
             "${workspaceFolder}/assets/base/default/settings.json",
-            "test_all"
+            "test_mods_all"
           ]
         },
     ]
