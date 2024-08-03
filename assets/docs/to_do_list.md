@@ -41,3 +41,5 @@ Properly setup Github ssh keys
 Part of the Epic Games Org on Github
 
 for installing from repos, args/scripts to fire after cloing for further repo setup
+rebuild options
+other project/xmake options
