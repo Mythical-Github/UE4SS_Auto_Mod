@@ -39,3 +39,5 @@ Prerequisites:
 Visual Studio 2019/2022
 Properly setup Github ssh keys
 Part of the Epic Games Org on Github
+
+for installing from repos, args/scripts to fire after cloing for further repo setup

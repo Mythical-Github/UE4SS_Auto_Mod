@@ -1,20 +1,6 @@
 from enum import Enum
 
 
-class GameLaunchType(Enum):
-    """
-    enum for how to launch the game
-    """
-    EXE = 'exe'
-    STEAM = 'steam'
-    EPIC = 'epic'
-    ITCH_IO = 'itch_io'
-    BATTLE_NET = 'battle_net'
-    ORIGIN = 'origin'
-    UBISOFT = 'ubisoft'
-    OTHER = 'other'
-
-
 class ScriptStateType(Enum):
     """
     enum for the various script states, used to fire off other functions
@@ -37,7 +23,7 @@ class ExecutionMode(Enum):
     ASYNC = 'async'
 
 
-class ScriptArg(Enum):
+class ScriptArg(Enum): # populate this enum automatically later from json
     """
     enum for the various args that can be passed to this program
     """

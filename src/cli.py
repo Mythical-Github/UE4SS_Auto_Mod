@@ -4,8 +4,16 @@ from pathlib import Path
 
 import log
 import commands
+import ssh_check
+import dependency_check
+        
 
+def app_setup_checks():
+    log.log_message('Check: Checking environment is correctly setup...')
+    dependency_check.check_all()
+    ssh_check.check_ssh_key()
 
+    
 def cli_logic():
     if getattr(sys, 'frozen', False):
         script_dir = Path(sys.executable).parent
@@ -57,4 +65,5 @@ def cli_logic():
                     cli_args[0], cli_args[1] = cli_args[1], cli_args[0]
                     for arg in cli_args:
                         log.log_message(f'Arg: {arg}')
+                    app_setup_checks()
                     function(*cli_args[1:])

@@ -1,5 +1,8 @@
+import os
+
 import log
 import settings
+import utilities
 
 def package_mods():
     log.log_message('Function: package mods was called')
@@ -29,7 +32,11 @@ def test_mods():
     log.log_message('Function: test mods was called')
 
 def test_mods_all(settings_json: str):
-    log.log_message(f'Function: test mods all was called with settings json: {settings_json}')
+    utilities.clone_ue4ss()
+    os.chdir(f'{settings.SCRIPT_DIR}/RE-UE4SS')
+    utilities.recursively_update_ue4ss_submodules()
+    utilities.generate_vs_project()
+    utilities.build_project()
 
 def add_mod(mod_name: str):
     log.log_message(f'Function: add mod with mod name {mod_name} was called')
