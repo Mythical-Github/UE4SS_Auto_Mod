@@ -1,0 +1,22 @@
+{
+    "general_info": {
+      "override_default_working_dir": false,
+      "working_dir": "C:/Users/Mythical/Downloads/Output",
+      "window_title": "UnrealAutoMod Automation Script"
+    },
+    "process_kill_info": {
+      "auto_close_game": true,
+      "processes": [
+        {
+          "process_name": "Fmodel",
+          "use_substring_check": true,
+          "script_state": "constant"
+        },
+        {
+          "process_name": "Umodel",
+          "use_substring_check": true,
+          "script_state": "constant"
+        }
+      ]
+    }
+    
