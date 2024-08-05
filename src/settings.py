@@ -1,6 +1,6 @@
-import json
 import os
 import sys
+import json
 
 
 settings = ''
@@ -47,22 +47,3 @@ def save_settings(settings_json: str):
 
 def pass_settings(settings_json: str):
     load_settings(settings_json)
-
-
-def test_mods(settings_json: str, *input_mod_names: str):
-    load_settings(settings_json)
-    global mod_names
-    for mod_name in input_mod_names:
-        mod_names.append(mod_name)
-    mods.create_mods()
-
-
-
-
-def add_asset_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str,
-                                                                       asset_paths: list):
-    for info in settings["mod_pak_info"]:
-        if info['mod_name'] == mod_name:
-            for asset_path in asset_paths:
-                info['manually_specified_assets']['asset_paths'].append(asset_path)
-    save_settings(pass_settings(settings_json))
