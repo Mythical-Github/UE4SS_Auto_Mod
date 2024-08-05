@@ -1,5 +1,5 @@
 import os
-import logging
+from python_logging import log
 from datetime import datetime
 from shutil import get_terminal_size
 from colorama import Fore, Style, init

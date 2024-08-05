@@ -2,7 +2,7 @@ import sys
 import json
 from pathlib import Path
 
-import log
+from python_logging import log
 import commands
 import ssh_check
 import dependency_check

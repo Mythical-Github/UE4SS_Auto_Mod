@@ -2,8 +2,7 @@ import subprocess
 import os
 
 from enums import ExecutionMode
-import settings
-import log
+from python_logging import log
 
 
 def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):

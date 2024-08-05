@@ -43,3 +43,13 @@ Part of the Epic Games Org on Github
 for installing from repos, args/scripts to fire after cloing for further repo setup
 rebuild options
 other project/xmake options
+
+UnrealPythonUtilities
+UnrealEnginePythonUtilities
+UnrealEngineModdingPythonUtilities
+Utilities
+EventManagement
+Logging
+ColorfulPrinting
+CLI module
+
