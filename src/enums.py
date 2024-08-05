@@ -21,15 +21,7 @@ class ExecutionMode(Enum):
     """
     SYNC = 'sync'
     ASYNC = 'async'
-
-
-class ScriptArg(Enum): # populate this enum automatically later from json
-    """
-    enum for the various args that can be passed to this program
-    """
-    TEST_MODS_ALL = 'test_mods_all'
-    TEST_MODS = 'test_mods'
-
+    
 
 class FileFilterType(Enum):
     """

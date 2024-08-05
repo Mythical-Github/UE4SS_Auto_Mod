@@ -2,9 +2,6 @@ import json
 import os
 import sys
 
-import psutil
-
-import enums
 
 settings = ''
 init_settings_done = False
