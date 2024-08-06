@@ -20,10 +20,9 @@ def app_setup_checks():
 
 
 if __name__ == "__main__":
-    
     try:
+        log.set_log_base_dir(script_dir)
         log.set_colors_json_path(f'{script_dir}/json/log_colors.json')
-        log.configure_logging()
         app_setup_checks()
         cli.set_json_location(f'{script_dir}/json/cli.json')
         cli.cli_logic()
