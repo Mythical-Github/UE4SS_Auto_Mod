@@ -1,5 +1,5 @@
-import subprocess
 import os
+import subprocess
 
 from enums import ExecutionMode
 from python_logging import log

@@ -1,8 +1,8 @@
 import os
 
 from python_logging import log
-import settings
 import utilities
+import settings
 
 def package_mods():
     log.log_message('Function: package mods was called')
