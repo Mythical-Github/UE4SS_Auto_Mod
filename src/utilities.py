@@ -53,8 +53,8 @@ def recursively_update_ue4ss_submodules():
 
 
 def clone_ue4ss():
-#    ue4ss_clone_command = 'git@github.com:UE4SS-RE/RE-UE4SS.git'
-    ue4ss_clone_command = 'git@github.com:Mythical-Github/RE-UE4SS.git'
+    ue4ss_clone_command = 'git@github.com:UE4SS-RE/RE-UE4SS.git'
+#     ue4ss_clone_command = 'git@github.com:Mythical-Github/RE-UE4SS.git'
 
     app_args = [
         'clone',
