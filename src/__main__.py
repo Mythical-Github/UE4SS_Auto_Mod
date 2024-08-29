@@ -2,9 +2,9 @@ import sys
 from pathlib import Path
 
 import ssh_check
-from cli_py import cli
+import cli_py.cli_py as cli
 import dependency_check
-from python_logging import log
+import log_py.log_py as log
 
 
 if getattr(sys, 'frozen', False):

@@ -1,6 +1,6 @@
 import os
 
-from python_logging import log
+import log_py.log_py as log
 import utilities
 import settings
 

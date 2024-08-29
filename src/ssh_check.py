@@ -1,6 +1,6 @@
 import subprocess
 
-from python_logging import log
+import log_py.log_py as log
 
 def check_ssh_key():
     log.log_message('Check: Checking if github ssh keys are setup correctly...')

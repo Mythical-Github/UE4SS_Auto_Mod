@@ -2,7 +2,7 @@ import os
 import shutil
 import subprocess
 
-from python_logging import log
+import log_py.log_py as log
 
 def check_command(command):
     try:
