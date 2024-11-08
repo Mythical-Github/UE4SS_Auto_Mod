@@ -1,6 +1,6 @@
 import os
 
-import log_py.log_py as log
+from ue4ss_mod_build_tools import log_py as log
 import utilities
 import settings
 

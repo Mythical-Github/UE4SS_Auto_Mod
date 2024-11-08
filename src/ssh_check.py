@@ -1,6 +1,6 @@
 import subprocess
 
-import log_py.log_py as log
+from ue4ss_mod_build_tools import log_py as log
 
 def check_ssh_key():
     log.log_message('Check: Checking if github ssh keys are setup correctly...')

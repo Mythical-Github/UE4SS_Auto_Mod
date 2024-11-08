@@ -2,9 +2,11 @@ import sys
 from pathlib import Path
 
 import ssh_check
-import cli_py.cli_py as cli
 import dependency_check
-import log_py.log_py as log
+from ue4ss_mod_build_tools import cli_py
+from ue4ss_mod_build_tools.cli import OPTIONS
+from ue4ss_mod_build_tools import log_py as log
+from ue4ss_mod_build_tools.log_colors import COLORS
 
 
 if getattr(sys, 'frozen', False):

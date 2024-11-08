@@ -2,7 +2,7 @@ import os
 import subprocess
 
 from enums import ExecutionMode
-import log_py.log_py as log
+from ue4ss_mod_build_tools import log_py as log
 
 
 def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
