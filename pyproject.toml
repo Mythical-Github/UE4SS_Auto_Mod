@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ue4ss_auto_mod"
+name = "ue4ss_mod_build_tools"
 dynamic = ["version"]
 description = ""
 readme = "README.md"
@@ -27,12 +27,12 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/Mythical-Github/ue4ss_auto_mod/blob/main/README.md"
-Issues = "https://github.com/Mythical-Github/ue4ss_auto_mod/issues"
-Source = "https://github.com/Mythical-Github/ue4ss_auto_mod"
+Documentation = "https://github.com/Mythical-Github/ue4ss_mod_build_tools/blob/main/README.md"
+Issues = "https://github.com/Mythical-Github/ue4ss_mod_build_tools/issues"
+Source = "https://github.com/Mythical-Github/ue4ss_mod_build_tools"
 
 [project.scripts]
-ue4ss_auto_mod = "ue4ss_auto_mod.__main__:main"
+ue4ss_mod_build_tools = "ue4ss_mod_build_tools.__main__:main"
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -41,7 +41,7 @@ allow-direct-references = true
 source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/ue4ss_auto_mod/_version.py"
+version-file = "src/ue4ss_mod_build_tools/_version.py"
 
 [tool.hatch.env]
 requires = ["hatch-pip-compile"]
@@ -61,7 +61,7 @@ dependencies = [
 
 [tool.hatch.envs.build.scripts]
 exe = [
-  "pyinstaller --noconfirm --onefile --console --name ue4ss_auto_mod --icon=assets/images/icons/project_main_icon.ico src/ue4ss_auto_mod/__main__.py",
+  "pyinstaller --noconfirm --onefile --console --name ue4ss_mod_build_tools --icon=assets/images/icons/project_main_icon.ico src/ue4ss_mod_build_tools/__main__.py",
 ]
 
 [tool.hatch.envs.scripts]
