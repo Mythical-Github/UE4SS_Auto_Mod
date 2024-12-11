@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from enums import ExecutionMode
+from ue4ss_mod_build_tools.enums import ExecutionMode
 from ue4ss_mod_build_tools import log_py as log
 
 

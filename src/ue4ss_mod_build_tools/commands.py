@@ -1,8 +1,8 @@
 import os
 
 from ue4ss_mod_build_tools import log_py as log
-import utilities
-import settings
+from ue4ss_mod_build_tools import utilities
+from ue4ss_mod_build_tools import settings
 
 def package_mods():
     log.log_message('Function: package mods was called')

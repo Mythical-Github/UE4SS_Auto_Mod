@@ -1,12 +1,12 @@
 import sys
 from pathlib import Path
 
-import ssh_check
-import dependency_check
+from ue4ss_mod_build_tools import ssh_check
+from ue4ss_mod_build_tools import dependency_check
 from ue4ss_mod_build_tools import cli_py
 from ue4ss_mod_build_tools.cli import OPTIONS
 from ue4ss_mod_build_tools import log_py as log
-from ue4ss_mod_build_tools.log_colors import COLORS
+from ue4ss_mod_build_tools.log_info import LOG_INFO
 
 
 if getattr(sys, 'frozen', False):
@@ -24,9 +24,8 @@ def app_setup_checks():
 if __name__ == "__main__":
     try:
         log.set_log_base_dir(script_dir)
-        log.set_colors_json_path(f'{script_dir}/json/log_colors.json')
+        log.configure_logging(LOG_INFO)
         app_setup_checks()
-        cli.set_json_location(f'{script_dir}/json/cli.json')
-        cli.cli_logic()
+        cli_py.cli_logic(OPTIONS)
     except Exception as error_message:
         log.log_message(str(error_message))     

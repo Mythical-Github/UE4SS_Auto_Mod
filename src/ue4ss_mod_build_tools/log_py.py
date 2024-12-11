@@ -1,32 +1,14 @@
 import os
-import logging
+import textwrap
 from datetime import datetime
 from shutil import get_terminal_size
 
-from colorama import Style, init
+from ue4ss_mod_build_tools.console import console
+from ue4ss_mod_build_tools.log_info import LOG_INFO
 
-
-init(autoreset=True)
-
-logger = logging.getLogger(__name__)
 
 log_base_dir = f'{os.getcwd()}/src'
-
-theme_colors = ''
-default_color = ''
-background_color = ''
 log_prefix = ''
-
-
-class FlushFileHandler(logging.FileHandler):
-    """Custom FileHandler that flushes after every write."""
-    def emit(self, record):
-        super().emit(record)
-        self.flush()  # Ensures log is written immediately
-
-
-def module_setup():
-    return
 
 
 def set_log_base_dir(base_dir: str):
@@ -35,68 +17,28 @@ def set_log_base_dir(base_dir: str):
 
 
 def configure_logging(colors_config):
-    global theme_colors
-    global default_color
-    global background_color
     global log_prefix
 
-    theme_colors = colors_config.get('theme_colors', {})
-    default_color = colors_config['default_color']
-    background_color = colors_config['background_color']
     log_prefix = colors_config['log_name_prefix']
 
     log_dir = os.path.join(log_base_dir, 'logs')
     if not os.path.isdir(log_dir):
         os.makedirs(log_dir)
 
-    for handler in logger.handlers[:]:
-        handler.close()
-        logger.removeHandler(handler)
-
     rename_latest_log(log_dir)
-
-    original_path = os.path.join(log_dir, 'latest.log')
-
-    global inter_log
-    inter_log = original_path
-
-    log_file = inter_log
-
-    # Use FlushFileHandler to ensure immediate writes
-    file_handler = FlushFileHandler(log_file)
-    file_handler.setLevel(logging.INFO)
-    file_handler.setFormatter(logging.Formatter('%(message)s'))
-
-    logger.addHandler(file_handler)
-    logger.setLevel(logging.INFO)
-
-
-def log_message(message: str):
-    logger.info(message)
-    color = default_color
-    for keyword, assigned_color in theme_colors.items():
-        if keyword in message:
-            color = assigned_color
-            break
-    terminal_width = get_terminal_size().columns
-    padded_message = (message[:terminal_width] if len(message) > terminal_width else message.ljust(terminal_width))
-    print(f"{background_color}{color}{padded_message}{Style.RESET_ALL}")
-
-    # Ensure file is flushed and available immediately
-    if hasattr(logger.handlers[0], 'flush'):
-        logger.handlers[0].flush()
 
 
 def rename_latest_log(log_dir):
-    latest_log_path = os.path.join(log_dir, 'latest.log')
+    latest_log_path = os.path.join(log_dir, f'{log_prefix}latest.log')
     if os.path.isfile(latest_log_path):
         try:
             timestamp = datetime.now().strftime('%m_%d_%Y_%H%M_%S')
             new_name = f'{log_prefix}{timestamp}.log'
             new_log_path = os.path.join(log_dir, new_name)
-            
+
+            # Ensure the new log file name is unique
             counter = 1
-            while os.path.isfile(new_log_path) or is_file_in_use(latest_log_path):
+            while os.path.isfile(new_log_path):
                 new_name = f'{log_prefix}{timestamp}_({counter}).log'
                 new_log_path = os.path.join(log_dir, new_name)
                 counter += 1
@@ -106,11 +48,47 @@ def rename_latest_log(log_dir):
         except PermissionError as e:
             log_message(f"Error renaming log file: {e}")
             return
+        
 
+def log_message(message: str):
+    color_options = LOG_INFO.get('theme_colors', {})
+    default_background_color = LOG_INFO.get('background_color')
+    default_background_color = f"rgb({default_background_color[0]},{default_background_color[1]},{default_background_color[2]})"
 
-def is_file_in_use(file_path):
+    default_text_color = LOG_INFO.get('default_color')
+    default_text_color = f"rgb({default_text_color[0]},{default_text_color[1]},{default_text_color[2]})"
+
+    terminal_width = get_terminal_size().columns
+    wrapped_message = textwrap.fill(message, width=terminal_width)
+
+    for keyword, color in color_options.items():
+        if keyword in message:
+            rgb_color = f"rgb({color[0]},{color[1]},{color[2]})"
+            console.print(wrapped_message, style=f'{rgb_color} on {default_background_color}')
+            break
+    else:
+        console.print(wrapped_message, style=f'{default_text_color} on {default_background_color}')
+
+    log_dir = os.path.join(log_base_dir, 'logs')
+    log_path = os.path.join(log_dir, f'{log_prefix}latest.log')
+
+    if not os.path.isdir(log_dir):
+        os.makedirs(log_dir)
+
+    if not os.path.isfile(log_path):
+        try:
+            with open(log_path, 'w') as log_file:
+                log_file.write("")
+        except IOError as e:
+            error_color = LOG_INFO.get('error_color', (255, 0, 0))
+            error_color = f"rgb({error_color[0]},{error_color[1]},{error_color[2]})"
+            console.print(f"Failed to create log file: {e}", style=f'{error_color} on {default_background_color}')
+            return
+
     try:
-        with open(file_path, 'a'):
-            return False
-    except IOError:
-        return True
+        with open(log_path, 'a') as log_file:
+            log_file.write(f"{message}\n")
+    except IOError as e:
+        error_color = LOG_INFO.get('error_color', (255, 0, 0))
+        error_color = f"rgb({error_color[0]},{error_color[1]},{error_color[2]})"
+        console.print(f"Failed to write to log file: {e}", style=f'{error_color} on {default_background_color}')

@@ -8,8 +8,7 @@
           "name": "test_all",
           "type": "debugpy",
           "request": "launch",
-          "program": "${workspaceFolder}/src/ue4ss_mod_build_tools/__main__.py",
-          "console": "integratedTerminal",
+          "module": "ue4ss_mod_build_tools",
           "args": [
             "${workspaceFolder}/assets/bases/release_base/default/settings.json",
             "test_mods_all"
@@ -19,8 +18,7 @@
           "name": "help",
           "type": "debugpy",
           "request": "launch",
-          "program": "${workspaceFolder}/src/ue4ss_mod_build_tools/__main__.py",
-          "console": "integratedTerminal",
+          "module": "ue4ss_mod_build_tools",
           "args": [
             "test_mods",
             "-h"
@@ -30,8 +28,7 @@
           "name": "reinstall_dependencies",
           "type": "debugpy",
           "request": "launch",
-          "program": "${workspaceFolder}/assets/build_scripts/dependency_installer.py",
-          "console": "integratedTerminal"
+          "module": "ue4ss_mod_build_tools",
         }
     ]
 }

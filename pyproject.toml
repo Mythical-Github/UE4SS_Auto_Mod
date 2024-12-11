@@ -23,7 +23,9 @@ classifiers = [
 ]
 dependencies = [
   "colorama",
-  "requests"
+  "requests",
+  "rich",
+  "rich_argparse",
 ]
 
 [project.urls]

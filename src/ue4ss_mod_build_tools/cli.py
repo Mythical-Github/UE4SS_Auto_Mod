@@ -1,7 +1,7 @@
-from ue4ss_mod_build_tools import main
+from ue4ss_mod_build_tools import commands
 
 OPTIONS = {
-    "module_name": "commands",
+    "module": commands,
     "commands": {
         "package_mods_all": {
             "function_name": "package_mods_all",
